@@ -26,9 +26,6 @@ function NavBar() {
         <NavLink to="/pharmacies">
           <Button>Pharmacies</Button>
         </NavLink>
-        <NavLink to="/drugs">
-          <Button>Drugs</Button>
-        </NavLink>
       </ButtonGroup>
     </Box>
   )
