@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import PharmacyDetails from './PharmacyDetails'
 
 function PharmacyList({ pharmacies }) {
@@ -18,7 +18,7 @@ function PharmacyList({ pharmacies }) {
 
   return (
     <div>
-        Pharmacy List: 
+        <h1>Pharmacy List: </h1>
         {pharmacyList}
     </div>
   )

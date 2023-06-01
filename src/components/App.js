@@ -1,7 +1,6 @@
 import '../App.css';
 import NavBar from './NavBar';
 import Home from './Home';
-import PharmacyDetails from './PharmacyDetails';
 import PharmacyList from './PharmacyList';
 import PharmacyInventory from './PharmacyInventory';
 import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
