@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-function DrugForm() {
+function DrugForm({ drugLists, setDrugs}) {
   const { id } = useParams()
   const [name, setName] = useState('')
   const [dose, setDose ] = useState('')
@@ -38,7 +38,17 @@ function DrugForm() {
             },
             body: JSON.stringify(params)
         })
-        
+    .then(resp => resp.json())
+    .then(data => {
+        const allDrugs = [...drugLists, data]
+        console.log(data)
+        console.log(allDrugs)
+        setDrugs(allDrugs)
+        setName('')
+        setDose('')
+        setFormulation('')
+        setQuantity('')
+    })
   }
 
 
