@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import DrugForm from './DrugForm';
 
 function PharmacyInventory({ pharmacies }) {
   const { id } = useParams();
@@ -29,6 +30,7 @@ function PharmacyInventory({ pharmacies }) {
       <h1>Pharmacy Inventory:</h1>
       <h2>{pharmacy.name}</h2>
       <h3>{drugLists}</h3>
+      <DrugForm/>
     </div>
   );
 }
