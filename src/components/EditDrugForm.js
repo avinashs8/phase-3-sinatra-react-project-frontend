@@ -28,13 +28,20 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
   
     const handleSubmit = e => {
       e.preventDefault()
-      console.log(drugId)
+      
       const params = {
         name: name, 
         dose: dose,
         formulation: formulation,
         quantity: quantity
       }
+
+      fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application'
+        }
+      })
     //   fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
     //           method: 'POST',
     //           headers: {
