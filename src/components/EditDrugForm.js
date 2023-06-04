@@ -41,7 +41,7 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: 
+        body: JSON.stringify(params)
       })
     //   fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
     //           method: 'POST',
