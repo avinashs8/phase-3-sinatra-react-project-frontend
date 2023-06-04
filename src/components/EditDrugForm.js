@@ -39,7 +39,7 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
       fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application'
+            'Content-Type': 'application/json'
         }
       })
     //   fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
