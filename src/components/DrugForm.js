@@ -9,6 +9,7 @@ function DrugForm({ drugLists, setDrugs}) {
   const [dose, setDose ] = useState('')
   const [formulation, setFormulation] = useState('')
   const [quantity, setQuantity] = useState('')
+  const [ toggleForm, setToggleForm ] = useState(true)
 
   const handleNameChange = e => {
     setName(e.target.value)
@@ -54,8 +55,8 @@ function DrugForm({ drugLists, setDrugs}) {
 
   return (
     <>
-    <div>New Drug</div>
-        <form onSubmit={handleSubmit}>
+    <button onClick={() => setToggleForm(!toggleForm)}>New Drug</button>
+        {toggleForm ? <div>{null}</div> : <form onSubmit={handleSubmit}>
             <h4>Enter Drug Name</h4>
             <TextField id="outlined-basic" label="Drug Name" variant="outlined" autoFocus={true} value={name} onChange={handleNameChange}/> 
             <h4>Enter Drug Dose</h4>
@@ -68,7 +69,7 @@ function DrugForm({ drugLists, setDrugs}) {
             
             <br />
             <Button variant="contained" type='submit'>Submit</Button>
-        </form>
+        </form>}
     </>
   )
 }

@@ -23,7 +23,7 @@ function PharmacyInventory({ pharmacies }) {
       setDrugs(pharmacyDrugs);
       setPharmacy(pharmacyStore);
     }
-  }, [id, pharmacies]);
+  }, [id]);
 
   function handleDelete(drugID){
     console.log(drugID)
@@ -34,7 +34,6 @@ function PharmacyInventory({ pharmacies }) {
     .then(() => {
       const drugsAfterDelete = drugLists.filter( d => d.id !== drugID
       )
-      console.log(drugsAfterDelete)
       setDrugs(drugsAfterDelete)
     })
   }
