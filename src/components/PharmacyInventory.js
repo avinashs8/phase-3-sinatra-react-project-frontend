@@ -53,7 +53,7 @@ function PharmacyInventory({ pharmacies }) {
           <h2>{pharmacy.name}</h2>
           <h3>
             {drugLists.map((drug) => (
-              <div key={drug.id}>
+              <div key={`id-${drug.id}`}>
                 <div>{drug.name} {drug.dose} {drug.formulation}</div>
                 <div>Quantity: {drug.quantity} Tablets</div>
                 <Stack direction="row" spacing={2} justifyContent="center">

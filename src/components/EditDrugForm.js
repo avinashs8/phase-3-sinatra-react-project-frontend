@@ -27,27 +27,36 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug, handleEdit }) {
     
   
     const handleSubmit = e => {
-      e.preventDefault()
+        e.preventDefault();
       
-      const params = {
-        name: name, 
-        dose: dose,
-        formulation: formulation,
-        quantity: quantity
-      }
-
-      fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
-        method: 'PATCH',
-        headers: {
+        const params = {
+          name: name, 
+          dose: dose,
+          formulation: formulation,
+          quantity: quantity
+        };
+      
+        fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
+          method: 'PATCH',
+          headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(params)
-      })
-      .then(resp => resp.json())
-      .then(data => {
-        const allDrugs = [...drugLists, data]
-        setDrugs(allDrugs)
-        handleEdit(null)
+          },
+          body: JSON.stringify(params)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+            const updatedList = drugLists.map(d => {
+                if (d.id === data.id) {
+                    return data
+                } else {
+                    return d
+                }
+            })
+            setDrugs(updatedList)
+            
+            
+            handleEdit(null)
       })
       
     }
