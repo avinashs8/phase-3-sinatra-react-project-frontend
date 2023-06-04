@@ -5,7 +5,7 @@ import PharmacyDetails from './PharmacyDetails'
 function PharmacyList({ pharmacies }) {
 
     
-    const [addForm, setAddForm] = useState(false)
+   
 
 
     const pharmacyList = pharmacies.map(pharmacy => {

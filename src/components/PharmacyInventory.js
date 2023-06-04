@@ -49,7 +49,7 @@ function PharmacyInventory({ pharmacies }) {
       <h1>Pharmacy Inventory:</h1>
       {pharmacy && (
         <>
-          <h2>{pharmacy.name}</h2>
+          <h2 style={{ fontSize: '44px' }}>{pharmacy.name}</h2>
           <h3>
             {drugLists.map((drug) => (
               <div key={`id-${drug.id}`}>
