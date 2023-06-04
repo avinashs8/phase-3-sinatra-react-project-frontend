@@ -1,6 +1,6 @@
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
 function EditDrugForm({ drugLists, setDrugs, drugId, drug, handleEdit }) {
@@ -62,7 +62,6 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug, handleEdit }) {
   
   return (
     <div>
-        <button>Update Drug</button>
         <form onSubmit={handleSubmit}>
             <h4>Update Drug Name</h4>
             <TextField id="outlined-basic" label="Update Drug Name" variant="outlined" autoFocus={true} value={name} onChange={handleNameChange}/> 
