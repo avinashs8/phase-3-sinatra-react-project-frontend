@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
+function EditDrugForm({ drugLists, setDrugs, drugId, drug, handleEdit }) {
     const { id } = useParams()
     const [name, setName] = useState(drug.name)
     const [dose, setDose ] = useState(drug.dose)
@@ -47,27 +47,9 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
       .then(data => {
         const allDrugs = [...drugLists, data]
         setDrugs(allDrugs)
-        
+        handleEdit(null)
       })
       
-    //   fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
-    //           method: 'POST',
-    //           headers: {
-    //               'Content-Type': 'application/json'
-    //           },
-    //           body: JSON.stringify(params)
-    //       })
-    //   .then(resp => resp.json())
-    //   .then(data => {
-    //       const allDrugs = [...drugLists, data]
-    //       console.log(data)
-    //       console.log(allDrugs)
-    //       setDrugs(allDrugs)
-    //       setName('')
-    //       setDose('')
-    //       setFormulation('')
-    //       setQuantity('')
-    //   })
     }
   
   return (

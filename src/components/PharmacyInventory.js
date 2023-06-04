@@ -65,7 +65,7 @@ function PharmacyInventory({ pharmacies }) {
                   </Button>
                 </Stack>
                 <br />
-                {toggleEditForm === drug.id ? <EditDrugForm drugLists={drugLists} setDrugs={setDrugs} drugId={drug.id} drug={drug}/> : null}
+                {toggleEditForm === drug.id ? <EditDrugForm drugLists={drugLists} setDrugs={setDrugs} drugId={drug.id} drug={drug} handleEdit={handleEdit}/> : null}
                 <br />
               </div>
             ))}
