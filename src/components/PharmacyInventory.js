@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DrugForm from './DrugForm';
+import EditDrugForm from './EditDrugForm';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
@@ -8,6 +9,8 @@ function PharmacyInventory({ pharmacies }) {
   const { id } = useParams();
   const [pharmacy, setPharmacy] = useState(null);
   const [drugLists, setDrugs] = useState([]);
+  const [toggleEditForm, setToggleEditForm] = useState(false)
+  
 
   useEffect(() => {
     const pharmacyStore = pharmacies.find((p) => p.id === parseInt(id));
@@ -23,7 +26,7 @@ function PharmacyInventory({ pharmacies }) {
       setDrugs(pharmacyDrugs);
       setPharmacy(pharmacyStore);
     }
-  }, [id]);
+  }, [ pharmacies, id]);
 
   function handleDelete(drugID){
     console.log(drugID)
@@ -36,6 +39,10 @@ function PharmacyInventory({ pharmacies }) {
       )
       setDrugs(drugsAfterDelete)
     })
+  }
+
+  function handleEdit(drugID) {
+    setToggleEditForm(drugID);
   }
 
   return (
@@ -53,10 +60,12 @@ function PharmacyInventory({ pharmacies }) {
                   <Button variant="outlined" onClick={()=> handleDelete(drug.id)}>
                     Delete
                   </Button>
-                  <Button variant="contained" >
+                  <Button variant="contained" onClick={() => handleEdit(drug.id)} >
                     Edit
                   </Button>
                 </Stack>
+                <br />
+                {toggleEditForm === drug.id ? <EditDrugForm drugLists={drugLists} setDrugs={setDrugs} drugId={drug.id} drug={drug}/> : null}
                 <br />
               </div>
             ))}
