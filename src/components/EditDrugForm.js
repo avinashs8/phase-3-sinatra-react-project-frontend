@@ -43,6 +43,13 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug }) {
         },
         body: JSON.stringify(params)
       })
+      .then(resp => resp.json())
+      .then(data => {
+        const allDrugs = [...drugLists, data]
+        setDrugs(allDrugs)
+        
+      })
+      
     //   fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugId}`, {
     //           method: 'POST',
     //           headers: {
