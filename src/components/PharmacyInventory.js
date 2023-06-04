@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DrugForm from './DrugForm';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 function PharmacyInventory({ pharmacies }) {
   const { id } = useParams();
@@ -23,6 +25,13 @@ function PharmacyInventory({ pharmacies }) {
     }
   }, [id, pharmacies]);
 
+  function handleDelete(drugID){
+    console.log(drugID)
+    fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugID}`, {
+      method:'DELETE',
+    })
+  }
+
   return (
     <div>
       <h1>Pharmacy Inventory:</h1>
@@ -34,6 +43,14 @@ function PharmacyInventory({ pharmacies }) {
               <div key={drug.id}>
                 <div>{drug.name} {drug.dose} {drug.formulation}</div>
                 <div>Quantity: {drug.quantity} Tablets</div>
+                <Stack direction="row" spacing={2} justifyContent="center">
+                  <Button variant="outlined" onClick={()=> handleDelete(drug.id)}>
+                    Delete
+                  </Button>
+                  <Button variant="contained" >
+                    Edit
+                  </Button>
+                </Stack>
                 <br />
               </div>
             ))}
