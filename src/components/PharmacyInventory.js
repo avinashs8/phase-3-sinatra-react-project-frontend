@@ -29,7 +29,6 @@ function PharmacyInventory({ pharmacies }) {
   }, [ pharmacies, id]);
 
   function handleDelete(drugID){
-    console.log(drugID)
     fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugID}`, {
       method:'DELETE',
     })

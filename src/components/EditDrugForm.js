@@ -45,7 +45,6 @@ function EditDrugForm({ drugLists, setDrugs, drugId, drug, handleEdit }) {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             const updatedList = drugLists.map(d => {
                 if (d.id === data.id) {
                     return data

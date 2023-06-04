@@ -42,13 +42,13 @@ function DrugForm({ drugLists, setDrugs }) {
     .then(resp => resp.json())
     .then(data => {
         const allDrugs = [...drugLists, data]
-        console.log(data)
-        console.log(allDrugs)
         setDrugs(allDrugs)
         setName('')
         setDose('')
         setFormulation('')
         setQuantity('')
+        setToggleForm(true)
+
     })
   }
 
