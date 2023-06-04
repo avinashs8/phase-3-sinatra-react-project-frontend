@@ -30,6 +30,13 @@ function PharmacyInventory({ pharmacies }) {
     fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugID}`, {
       method:'DELETE',
     })
+    .then(resp => resp.json())
+    .then(() => {
+      const drugsAfterDelete = drugLists.filter( d => d.id !== drugID
+      )
+      console.log(drugsAfterDelete)
+      setDrugs(drugsAfterDelete)
+    })
   }
 
   return (
