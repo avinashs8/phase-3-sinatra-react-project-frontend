@@ -5,16 +5,16 @@ import EditDrugForm from './EditDrugForm';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 
-function PharmacyInventory({ pharmacies }) {
+function PharmacyInventory({ pharmacies, setDrugs, drugLists }) {
   const { id } = useParams();
-  const [pharmacy, setPharmacy] = useState(null);
-  const [drugLists, setDrugs] = useState([]);
+  const [pharmacy, setPharmacy] = useState(null)
   const [toggleEditForm, setToggleEditForm] = useState(false)
   
 
   useEffect(() => {
     const pharmacyStore = pharmacies.find((p) => p.id === parseInt(id));
-    if (pharmacyStore) {
+    setPharmacy(pharmacyStore);
+    if (pharmacyStore.drugs) {
       const pharmacyDrugs = pharmacyStore.drugs.map((drug) => ({
         id: drug.id,
         name: drug.name,
@@ -24,19 +24,22 @@ function PharmacyInventory({ pharmacies }) {
         pharmacy_id: drug.pharmacy_id,
       }));
       setDrugs(pharmacyDrugs);
-      setPharmacy(pharmacyStore);
     }
-  }, [ pharmacies, id]);
+    
+  }, [id]);
 
   function handleDelete(drugID){
     fetch(`http://localhost:9292/pharmacies/${id}/drugs/${drugID}`, {
       method:'DELETE',
+
     })
     .then(resp => resp.json())
     .then(() => {
       const drugsAfterDelete = drugLists.filter( d => d.id !== drugID
       )
+      
       setDrugs(drugsAfterDelete)
+      
     })
   }
 

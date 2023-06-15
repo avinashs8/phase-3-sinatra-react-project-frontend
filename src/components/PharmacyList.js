@@ -1,8 +1,8 @@
 import React from 'react'
-import { useState } from 'react'
+import AddPharmacy from './AddPharmacy'
 import PharmacyDetails from './PharmacyDetails'
 
-function PharmacyList({ pharmacies }) {
+function PharmacyList({ pharmacies, setPharmacies }) {
 
     
    
@@ -20,6 +20,8 @@ function PharmacyList({ pharmacies }) {
     <div>
         <h1>Pharmacy List: </h1>
         {pharmacyList}
+        <br/>
+        <AddPharmacy pharmacies={pharmacies} setPharmacies={setPharmacies}/>
     </div>
   )
 }
